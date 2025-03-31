@@ -21,9 +21,12 @@ let wrong_answer = localStorage.getItem('wrong_answers') ? JSON.parse(localStora
 
 function updateScoreDisplay() {
     document.querySelector('.score').innerHTML = `
+    
         <div>Correct Answers: ${correct_answer}</div>
         <div>Wrong Answers: ${wrong_answer}</div>
-    `;
+        <div>number of question : ${numberofq}</div>
+  
+        `;
 }
 
 window.check = function(selected) {
