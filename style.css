@@ -12,6 +12,7 @@ body {
     min-height: 100vh;
     background-color: #fdf6ec; 
     padding: 20px;
+    position: relative;
 }
 
 
@@ -99,6 +100,25 @@ h1 {
 
 .reset:hover {
     background-color: #3b6347;
+}
+
+.score {
+    font-size: 1.2em;
+    color: #333;
+    margin: 20px 0;
+    text-align: center;
+    display: flex;
+    gap: 20px;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+}
+
+.score div {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 

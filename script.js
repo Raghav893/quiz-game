@@ -8,6 +8,9 @@ const option2 = quizData[randomNumber-1].options[1]
 const option3 = quizData[randomNumber-1].options[2]
 const option4 = quizData[randomNumber-1].options[3]
 const correct = quizData[randomNumber-1].correct_answer
+let answer = false; 
+let correct_answer = localStorage.getItem('correct_answers') ? JSON.parse(localStorage.getItem('correct_answers')) : 0;
+let wrong_answer = localStorage.getItem('wrong_answers') ? JSON.parse(localStorage.getItem('wrong_answers')) : 0;
 // console.log(Question);
 
 // console.log(option1 );
@@ -16,7 +19,23 @@ const correct = quizData[randomNumber-1].correct_answer
 // console.log(option4 );
 
 
+function updateScoreDisplay() {
+    document.querySelector('.score').innerHTML = `
+        <div>Correct Answers: ${correct_answer}</div>
+        <div>Wrong Answers: ${wrong_answer}</div>
+    `;
+}
+
 window.check = function(selected) {
+    answer = selected === correct;
+    if (answer === true) {
+        correct_answer += 1;
+        localStorage.setItem('correct_answers', JSON.stringify(correct_answer));
+    } else {
+        wrong_answer += 1;
+        localStorage.setItem('wrong_answers', JSON.stringify(wrong_answer));
+    }
+    updateScoreDisplay();
     if (selected === 1) {
         if (correct === 1) {
             document.querySelector('.option1-3').innerHTML = `
@@ -142,9 +161,18 @@ document.querySelector('.next-btn').addEventListener('click', () => {
     console.log('Updated count:', numberofq);
 });
 
-document.querySelector('.reset').addEventListener('click',()=>{
-    numberofq=0;
-    console.log(numberofq);
-    
-})
+document.querySelector('.reset').addEventListener('click', () => {
+    numberofq = 0;
+    correct_answer = 0;
+    wrong_answer = 0;
+    localStorage.setItem('numberqs', JSON.stringify(numberofq));
+    localStorage.setItem('correct_answers', JSON.stringify(correct_answer));
+    localStorage.setItem('wrong_answers', JSON.stringify(wrong_answer));
+    updateScoreDisplay();
+    console.log('Reset scores:', { numberofq, correct_answer, wrong_answer });
+});
 console.log(numberofq);
+console.log(answer);
+
+
+updateScoreDisplay();
