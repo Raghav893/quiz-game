@@ -85,6 +85,21 @@ h1 {
 .next-btn:hover {
     background-color: #3b6347;
 }
+.reset {
+    background-color: #4a7c59;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.reset:hover {
+    background-color: #3b6347;
+}
 
 
 

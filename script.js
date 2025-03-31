@@ -133,8 +133,18 @@ document.querySelector('.option1-3').innerHTML=`
 document.querySelector('.option2-4').innerHTML=`
     <button value="2" onclick="check(2)" class="option option2">${option2}</button>
     <button value="4" onclick="check(4)" class="option option4">${option4}</button>`
-
-
   
+let numberofq = localStorage.getItem('numberqs') ? JSON.parse(localStorage.getItem('numberqs')) : 0;
 
+document.querySelector('.next-btn').addEventListener('click', () => {
+    numberofq += 1;  
+    localStorage.setItem('numberqs', JSON.stringify(numberofq)); 
+    console.log('Updated count:', numberofq);
+});
 
+document.querySelector('.reset').addEventListener('click',()=>{
+    numberofq=0;
+    console.log(numberofq);
+    
+})
+console.log(numberofq);
